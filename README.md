@@ -2,7 +2,7 @@
 
 *magic rest client*
 
-[![NPM](https://nodei.co/npm/petri.png?downloads=true&stars=true)](https://nodei.co/npm/petri/)
+[![NPM](https://nodei.co/npm/fakir.png?downloads=true&stars=true)](https://nodei.co/npm/fakir/)
 
 ## Description
 
