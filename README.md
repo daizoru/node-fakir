@@ -30,7 +30,7 @@ api.price "PEAR", (err, price) -> console.log "PEAR: #{price}"
 
 ### JS
 
-Of course Coffee and JS inrterfaces are strictly the same, and share the same features:
+Of course Coffee and JS interfaces are strictly the same, and share the same features:
 
 ```javascript
 var Fakir = require('fakir');
