@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Node-fakir by daizoru</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Node-fakir</h1>
+        <h2>magic rest client</h2>
+        <a href="https://github.com/daizoru/node-fakir" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="node-fakir" class="anchor" href="#node-fakir"><span class="octicon octicon-link"></span></a>node-fakir</h1>
+
+<p><em>magic rest client</em></p>
+
+<p><a href="https://nodei.co/npm/fakir/"><img src="https://nodei.co/npm/fakir.png?downloads=true&amp;stars=true" alt="NPM"></a></p>
+
+<h2>
+<a name="description" class="anchor" href="#description"><span class="octicon octicon-link"></span></a>Description</h2>
+
+<p>You only deal with rest + json + callback-based apps? look no further:</p>
+
+<h2>
+<a name="how-it-works" class="anchor" href="#how-it-works"><span class="octicon octicon-link"></span></a>How it works</h2>
+
+<h3>
+<a name="coffee" class="anchor" href="#coffee"><span class="octicon octicon-link"></span></a>Coffee</h3>
+
+<div class="highlight highlight-coffeescript"><pre><span class="nv">Fakir = </span><span class="nx">require</span> <span class="s">'fakir'</span>
+
+<span class="nv">api = </span><span class="k">new</span> <span class="nx">Fakir</span>
+  <span class="nv">hello: </span><span class="nf">(msg)    -&gt;</span> <span class="s">"POST $msg TO http://foo.bar"</span>
+  <span class="nv">price: </span><span class="nf">(ticker) -&gt;</span> <span class="s">"GET http://foo.bar/stock/$ticker"</span>
+
+<span class="c1"># and call them!</span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">hello</span> <span class="s">"world"</span>
+
+<span class="c1"># all functions takes a "callback(err, data)"</span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">price</span> <span class="s">"PEAR"</span><span class="p">,</span> <span class="nf">(err, price) -&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s">"PEAR: </span><span class="si">#{</span><span class="nx">price</span><span class="si">}</span><span class="s">"</span>
+</pre></div>
+
+<h3>
+<a name="js" class="anchor" href="#js"><span class="octicon octicon-link"></span></a>JS</h3>
+
+<p>Of course Coffee and JS interfaces are strictly the same, and share the same features:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">Fakir</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fakir'</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span> 
+<span class="kd">var</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Fakir</span><span class="p">({</span>
+    <span class="s1">'hello'</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span> 
+        <span class="k">return</span> <span class="s2">"POST $msg TO http://foo.bar"</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="s1">'price'</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ticker</span><span class="p">)</span> <span class="p">{</span> 
+        <span class="k">return</span> <span class="s2">"GET http://foo.bar/stock/$ticker"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">},</span> <span class="kc">true</span><span class="p">)</span> <span class="c1">// add 'true' at the end to mock/debug the routes</span>
+
+<span class="c1">// chaining is supported, but not yet futures: functions are called immediately </span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">hello</span><span class="p">(</span><span class="s2">"world"</span><span class="p">).</span><span class="nx">price</span><span class="p">(</span><span class="s2">"PEAR"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">price</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"PEAR: #{price}"</span><span class="p">);</span>
+<span class="p">})</span>
+
+</pre></div>
+
+<h3>
+<a name="changelog" class="anchor" href="#changelog"><span class="octicon octicon-link"></span></a>Changelog</h3>
+
+<h4>
+<a name="001" class="anchor" href="#001"><span class="octicon octicon-link"></span></a>0.0.1:</h4>
+
+<ul>
+<li>moved routes into the Fakir constructor</li>
+<li>removed add() function</li>
+<li>fixed a closure bug with the for loop</li>
+<li>fixed a critical bug with optional callback</li>
+<li>added an optional mock parameter to test routes</li>
+<li>various cleaning</li>
+</ul><h4>
+<a name="000-initial-version" class="anchor" href="#000-initial-version"><span class="octicon octicon-link"></span></a>0.0.0: Initial version</h4>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/daizoru/node-fakir/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/daizoru/node-fakir/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/daizoru/node-fakir"></a> is maintained by <a href="https://github.com/daizoru">daizoru</a>.</p>
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
