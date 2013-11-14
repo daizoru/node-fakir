@@ -60,3 +60,7 @@ api.hello("world").price("PEAR", function(err, price) {
  
 #### 0.0.0: Initial version
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/daizoru/node-fakir/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
