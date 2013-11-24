@@ -29,10 +29,13 @@ class module.exports
                 cb undefined, "ok"
                 return @
               restler.get(url).on 'complete', (result) ->
-                if result instanceof Error
-                  cb result, undefined
-                else
-                  cb undefined, result
+                try
+                  if result instanceof Error
+                    cb result, undefined
+                  else
+                    cb undefined, result
+                catch err 
+                  console.log err.stack
               @
             
           when 'POST'
@@ -55,10 +58,13 @@ class module.exports
                 cb undefined, "ok"
                 return @
               restler.post(url, data: post_data).on 'complete', (result) ->
-                if result instanceof Error
-                  cb result, undefined
-                else
-                  cb undefined, result
+                try
+                  if result instanceof Error
+                    cb result, undefined
+                  else
+                    cb undefined, result
+                catch err 
+                  console.log err.stack
               @
           else
             throw "unsupported #{parts}"
